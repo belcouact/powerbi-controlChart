@@ -104,4 +104,4 @@ MIT
 
 ## Author
 
-Alex Luo
+Alex Luo (aluO@wlgore.com)
