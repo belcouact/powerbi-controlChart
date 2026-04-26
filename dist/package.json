@@ -1,0 +1,17 @@
+{
+		"version": "1.0.0.0",
+		"author": {"name":"Alex Luo","email":"aluo@wlgore.com"},
+		"resources": [
+			{
+				"resourceId": "rId0",
+				"sourceType": 5,
+				"file": "resources/controlChart.pbiviz.json"
+			}
+		],
+		"visual": {"name":"controlChart","displayName":"Statistical Control Chart","guid":"controlChart","visualClassName":"Visual","version":"1.0.0.0","description":"Advanced statistical control chart with UCL/LCL, USL/LSL, phase control, Western Electric rules, and process capability statistics.","supportUrl":"https://github.com/alexluo/controlChart","gitHubUrl":"https://github.com/alexluo/controlChart"},
+		"metadata": {
+			"pbivizjson": {
+				"resourceId": "rId0"
+			}
+		}
+	}

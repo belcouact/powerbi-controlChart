@@ -1,6 +1,4 @@
 node_modules/
-dist/
-*.pbiviz
 webpack.statistics.prod.html
 .tmp/
 assets/icon.svg
