@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "ES6",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "outDir": "./.tmp/build/",
+    "baseUrl": "./src",
+    "paths": {
+      "d3": ["../node_modules/@types/d3"]
+    },
+    "lib": ["ES2017", "dom"]
+  },
+  "files": ["src/visual.ts", "src/settings.ts"],
+  "exclude": ["node_modules", ".tmp"]
+}

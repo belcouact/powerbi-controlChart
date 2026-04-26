@@ -1,0 +1,452 @@
+{
+  "dataRoles": [
+    {
+      "displayName": "Values",
+      "description": "The measurement values to plot on the control chart",
+      "name": "values",
+      "kind": "Measure"
+    },
+    {
+      "displayName": "Sample (optional)",
+      "description": "Sample name or identifier for the x-axis (optional, auto-generated if not provided)",
+      "name": "sample",
+      "kind": "Grouping"
+    },
+    {
+      "displayName": "Phase (optional)",
+      "description": "Phase or period grouping for separate control limits per phase",
+      "name": "phase",
+      "kind": "Grouping"
+    }
+  ],
+  "dataViewMappings": [
+    {
+      "conditions": [
+        {
+          "values": { "max": 1 },
+          "sample": { "max": 1 },
+          "phase": { "max": 1 }
+        }
+      ],
+      "categorical": {
+        "categories": {
+          "select": [
+            { "for": { "in": "sample" } },
+            { "for": { "in": "phase" } }
+          ],
+          "dataReductionAlgorithm": { "top": {} }
+        },
+        "values": {
+          "select": [
+            { "bind": { "to": "values" } }
+          ],
+          "dataReductionAlgorithm": { "top": {} }
+        }
+      }
+    }
+  ],
+  "objects": {
+    "controlLines": {
+      "displayName": "Control Lines",
+      "properties": {
+        "show": {
+          "displayName": "Show Control Lines",
+          "type": { "bool": true }
+        },
+        "show1Sigma": {
+          "displayName": "Show 1-Sigma Lines",
+          "type": { "bool": true }
+        },
+        "show2Sigma": {
+          "displayName": "Show 2-Sigma Lines",
+          "type": { "bool": true }
+        },
+        "show3Sigma": {
+          "displayName": "Show 3-Sigma Lines (UCL/LCL)",
+          "type": { "bool": true }
+        },
+        "clColor": {
+          "displayName": "Center Line Color",
+          "description": "Color for the center line (mean)",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "clStyle": {
+          "displayName": "Center Line Style",
+          "type": { "enumeration": [
+            { "displayName": "Solid", "value": "solid" },
+            { "displayName": "Dashed", "value": "dashed" },
+            { "displayName": "Dotted", "value": "dotted" }
+          ]}
+        },
+        "clWidth": {
+          "displayName": "Center Line Width",
+          "type": { "numeric": true }
+        },
+        "uclColor": {
+          "displayName": "UCL Color",
+          "description": "Color for the Upper Control Limit (+3σ)",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "uclStyle": {
+          "displayName": "UCL Style",
+          "type": { "enumeration": [
+            { "displayName": "Solid", "value": "solid" },
+            { "displayName": "Dashed", "value": "dashed" },
+            { "displayName": "Dotted", "value": "dotted" }
+          ]}
+        },
+        "uclWidth": {
+          "displayName": "UCL Width",
+          "type": { "numeric": true }
+        },
+        "lclColor": {
+          "displayName": "LCL Color",
+          "description": "Color for the Lower Control Limit (-3σ)",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "lclStyle": {
+          "displayName": "LCL Style",
+          "type": { "enumeration": [
+            { "displayName": "Solid", "value": "solid" },
+            { "displayName": "Dashed", "value": "dashed" },
+            { "displayName": "Dotted", "value": "dotted" }
+          ]}
+        },
+        "lclWidth": {
+          "displayName": "LCL Width",
+          "type": { "numeric": true }
+        },
+        "sigma1Color": {
+          "displayName": "1-Sigma Line Color",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "sigma2Color": {
+          "displayName": "2-Sigma Line Color",
+          "type": { "fill": { "solid": { "color": true } } }
+        }
+      }
+    },
+    "specLimits": {
+      "displayName": "Specification Limits",
+      "properties": {
+        "show": {
+          "displayName": "Show Spec Limits",
+          "type": { "bool": true }
+        },
+        "uslValue": {
+          "displayName": "USL Value",
+          "description": "Upper Specification Limit (optional)",
+          "type": { "numeric": true }
+        },
+        "uslColor": {
+          "displayName": "USL Color",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "uslStyle": {
+          "displayName": "USL Style",
+          "type": { "enumeration": [
+            { "displayName": "Solid", "value": "solid" },
+            { "displayName": "Dashed", "value": "dashed" },
+            { "displayName": "Dotted", "value": "dotted" }
+          ]}
+        },
+        "uslWidth": {
+          "displayName": "USL Width",
+          "type": { "numeric": true }
+        },
+        "lslValue": {
+          "displayName": "LSL Value",
+          "description": "Lower Specification Limit (optional)",
+          "type": { "numeric": true }
+        },
+        "lslColor": {
+          "displayName": "LSL Color",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "lslStyle": {
+          "displayName": "LSL Style",
+          "type": { "enumeration": [
+            { "displayName": "Solid", "value": "solid" },
+            { "displayName": "Dashed", "value": "dashed" },
+            { "displayName": "Dotted", "value": "dotted" }
+          ]}
+        },
+        "lslWidth": {
+          "displayName": "LSL Width",
+          "type": { "numeric": true }
+        }
+      }
+    },
+    "targetLine": {
+      "displayName": "Target Line",
+      "properties": {
+        "show": {
+          "displayName": "Show Target",
+          "type": { "bool": true }
+        },
+        "targetValue": {
+          "displayName": "Target Value",
+          "description": "Target or nominal value (optional)",
+          "type": { "numeric": true }
+        },
+        "color": {
+          "displayName": "Target Color",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "style": {
+          "displayName": "Target Style",
+          "type": { "enumeration": [
+            { "displayName": "Solid", "value": "solid" },
+            { "displayName": "Dashed", "value": "dashed" },
+            { "displayName": "Dotted", "value": "dotted" }
+          ]}
+        },
+        "width": {
+          "displayName": "Target Width",
+          "type": { "numeric": true }
+        }
+      }
+    },
+    "dataPoints": {
+      "displayName": "Data Points",
+      "properties": {
+        "show": {
+          "displayName": "Show Data Points",
+          "type": { "bool": true }
+        },
+        "inControlColor": {
+          "displayName": "In-Control Color",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "outControlColor": {
+          "displayName": "Out-of-Control Color",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "pointSize": {
+          "displayName": "Point Size",
+          "type": { "numeric": true }
+        },
+        "showLine": {
+          "displayName": "Show Connecting Line",
+          "type": { "bool": true }
+        },
+        "lineColor": {
+          "displayName": "Line Color",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "lineWidth": {
+          "displayName": "Line Width",
+          "type": { "numeric": true }
+        }
+      }
+    },
+    "phaseControl": {
+      "displayName": "Phase Control",
+      "properties": {
+        "show": {
+          "displayName": "Show Phase Separators",
+          "type": { "bool": true }
+        },
+        "separatorColor": {
+          "displayName": "Separator Color",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "separatorStyle": {
+          "displayName": "Separator Style",
+          "type": { "enumeration": [
+            { "displayName": "Solid", "value": "solid" },
+            { "displayName": "Dashed", "value": "dashed" },
+            { "displayName": "Dotted", "value": "dotted" }
+          ]}
+        },
+        "separatorWidth": {
+          "displayName": "Separator Width",
+          "type": { "numeric": true }
+        },
+        "showPhaseLabels": {
+          "displayName": "Show Phase Labels",
+          "type": { "bool": true }
+        },
+        "phaseLabelFontSize": {
+          "displayName": "Phase Label Font Size",
+          "type": { "numeric": true }
+        },
+        "recalculatePerPhase": {
+          "displayName": "Recalculate Limits Per Phase",
+          "description": "Calculate separate control limits for each phase",
+          "type": { "bool": true }
+        }
+      }
+    },
+    "oocRules": {
+      "displayName": "Out-of-Control Rules",
+      "properties": {
+        "rule1": {
+          "displayName": "Rule 1: 1 point beyond 3σ",
+          "type": { "bool": true }
+        },
+        "rule2": {
+          "displayName": "Rule 2: 9 points same side of CL",
+          "type": { "bool": true }
+        },
+        "rule3": {
+          "displayName": "Rule 3: 6 points trending",
+          "type": { "bool": true }
+        },
+        "rule4": {
+          "displayName": "Rule 4: 14 points alternating",
+          "type": { "bool": true }
+        },
+        "rule5": {
+          "displayName": "Rule 5: 2 of 3 beyond 2σ",
+          "type": { "bool": true }
+        },
+        "rule6": {
+          "displayName": "Rule 6: 4 of 5 beyond 1σ",
+          "type": { "bool": true }
+        }
+      }
+    },
+    "statistics": {
+      "displayName": "Statistics Panel",
+      "properties": {
+        "show": {
+          "displayName": "Show Statistics",
+          "type": { "bool": true }
+        },
+        "position": {
+          "displayName": "Position",
+          "type": { "enumeration": [
+            { "displayName": "Top-Right", "value": "topRight" },
+            { "displayName": "Top-Left", "value": "topLeft" },
+            { "displayName": "Bottom-Right", "value": "bottomRight" },
+            { "displayName": "Bottom-Left", "value": "bottomLeft" }
+          ]}
+        },
+        "fontSize": {
+          "displayName": "Font Size",
+          "type": { "numeric": true }
+        },
+        "showMean": {
+          "displayName": "Show Mean",
+          "type": { "bool": true }
+        },
+        "showStdDev": {
+          "displayName": "Show Std Dev",
+          "type": { "bool": true }
+        },
+        "showCp": {
+          "displayName": "Show Cp",
+          "type": { "bool": true }
+        },
+        "showCpk": {
+          "displayName": "Show Cpk",
+          "type": { "bool": true }
+        },
+        "showPp": {
+          "displayName": "Show Pp",
+          "type": { "bool": true }
+        },
+        "showPpk": {
+          "displayName": "Show Ppk",
+          "type": { "bool": true }
+        },
+        "showOOCCount": {
+          "displayName": "Show OOC Count",
+          "type": { "bool": true }
+        },
+        "showOOCPercent": {
+          "displayName": "Show OOC %",
+          "type": { "bool": true }
+        },
+        "showN": {
+          "displayName": "Show N",
+          "type": { "bool": true }
+        },
+        "showRange": {
+          "displayName": "Show Range",
+          "type": { "bool": true }
+        }
+      }
+    },
+    "axis": {
+      "displayName": "Axis",
+      "properties": {
+        "showXAxis": {
+          "displayName": "Show X Axis",
+          "type": { "bool": true }
+        },
+        "showYAxis": {
+          "displayName": "Show Y Axis",
+          "type": { "bool": true }
+        },
+        "axisFontSize": {
+          "displayName": "Axis Font Size",
+          "type": { "numeric": true }
+        },
+        "axisColor": {
+          "displayName": "Axis Color",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "xLabel": {
+          "displayName": "X Axis Label",
+          "type": { "text": true }
+        },
+        "yLabel": {
+          "displayName": "Y Axis Label",
+          "type": { "text": true }
+        }
+      }
+    },
+    "zones": {
+      "displayName": "Zone Shading",
+      "properties": {
+        "show": {
+          "displayName": "Show Zones",
+          "type": { "bool": true }
+        },
+        "zoneAColor": {
+          "displayName": "Zone A Color (2σ-3σ)",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "zoneBColor": {
+          "displayName": "Zone B Color (1σ-2σ)",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "zoneCColor": {
+          "displayName": "Zone C Color (0-1σ)",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "zoneOpacity": {
+          "displayName": "Zone Opacity",
+          "type": { "numeric": true }
+        }
+      }
+    },
+    "lineLabels": {
+      "displayName": "Line Labels",
+      "properties": {
+        "show": {
+          "displayName": "Show Line Labels",
+          "type": { "bool": true }
+        },
+        "fontSize": {
+          "displayName": "Label Font Size",
+          "type": { "numeric": true }
+        },
+        "showValues": {
+          "displayName": "Show Values on Labels",
+          "type": { "bool": true }
+        }
+      }
+    }
+  },
+  "privileges": [],
+  "supportsHighlight": true,
+  "supportsKeyboardFocus": true,
+  "supportsLandingPage": true,
+  "suppressDefaultTitle": false,
+  "sorting": {
+    "custom": {}
+  }
+}

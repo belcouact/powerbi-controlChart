@@ -1,0 +1,46 @@
+{
+  "visual": {
+    "name": "controlChart",
+    "displayName": "Statistical Control Chart",
+    "guid": "controlChart",
+    "description": "Advanced statistical control chart with UCL/LCL, USL/LSL, phase control, Western Electric rules, and process capability statistics.",
+    "supportUrl": "https://github.com/alexluo/controlChart",
+    "gitHubUrl": "https://github.com/alexluo/controlChart",
+    "visualClassName": "Visual",
+    "version": "1.0.0.0",
+    "apiVersion": "5.7.0",
+    "author": {
+      "name": "Alex Luo",
+      "email": "aluo@wlgore.com"
+    },
+    "assets": {
+      "icon": "assets/icon.png"
+    },
+    "externalJS": null,
+    "style": "style/visual.less",
+    "capabilities": "capabilities.json",
+    "dependencies": null,
+    "stringResources": []
+  },
+  "name": "controlChart",
+  "displayName": "Statistical Control Chart",
+  "guid": "controlChartA1B2C3D4E5F6",
+  "description": "Advanced statistical control chart with UCL/LCL, USL/LSL, phase control, Western Electric rules, and process capability statistics.",
+  "supportUrl": "https://github.com/alexluo/controlChart",
+  "gitHubUrl": "https://github.com/alexluo/controlChart",
+  "visualClassName": "Visual",
+  "version": "1.0.0.0",
+  "apiVersion": "5.7.0",
+  "author": {
+    "name": "Alex Luo",
+    "email": "aluo@wlgore.com"
+  },
+  "assets": {
+    "icon": "assets/icon.png"
+  },
+  "externalJS": null,
+  "style": "style/visual.less",
+  "capabilities": "capabilities.json",
+  "dependencies": null,
+  "stringResources": []
+}

@@ -1,0 +1,25 @@
+.controlChart {
+    overflow: hidden;
+
+    .chartGroup {
+        .zone {
+            pointer-events: none;
+        }
+
+        .dataPoint {
+            cursor: pointer;
+            transition: r 0.15s ease-in-out;
+
+            &:hover {
+                r: 8;
+                stroke-width: 2;
+            }
+        }
+
+        .x-axis, .y-axis {
+            path, line {
+                shape-rendering: crispEdges;
+            }
+        }
+    }
+}
